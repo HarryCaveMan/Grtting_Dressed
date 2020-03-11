@@ -8,5 +8,11 @@ Surely, you, like most, are prone to common wardrobe errors like putting your sh
 
 Why lose time getting dressed because you haven't remembered that pants are difficult withous shoes. We simplified all that, all you have to do is memorize this table that replaces clothes to easy to remember numbers! You can then copy paste those numbers into a space separated string and run this app with them to see if there are any wardrobe conflicts.
 
+
+## Usage
+
+This application requires nodejs, it has no dependencies other than node so you can just run it from the project directory with `node main.js`
+
 # Bonus Feature
-I have added for your convenience an extra feature which readily awaits your input
+I have added for your convenience an extra feature which readily awaits your input if you run with the parameter `poll` IE `node main.ja poll`
+
