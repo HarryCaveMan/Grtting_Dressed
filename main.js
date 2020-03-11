@@ -6,22 +6,47 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+const runType = process.argv[2];
 
-
-const processInput = (input) => {
+const processInputRecursive = (input) => {
 	try {
 		if(Outfit.add(input)) {
 		    process.exit(0);
 	    }
-	    askQuestion();
+	    askQuestionRecursive();
 	} catch(e) {
 		process.exit(1);
 	}	
 }
 
+const processInputs = (inputs) => {
+	items = inputs.split(" ");
+	items.forEach(item => {
+		try {
+			if(Outfit.add(item)) {
+				console.log(item);
+		    	process.exit(0);
+	        }
+		} catch(e) {
+			process.exit(1);
+		}
+	});
+	console.log("fail");
 
-const askQuestion = () => {
-	rl.question("pick an item: ",processInput);
 }
 
-askQuestion();
+
+const askQuestionRecursive = () => {
+	rl.question("pick an item: ",processInputRecursive);
+}
+
+const askQuestion = () => {
+	rl.question("enter items: ",processInputs);
+}
+
+
+if(runType === "poll") {
+	askQuestionRecursive();
+} else {
+    askQuestion()
+}

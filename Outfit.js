@@ -1,5 +1,4 @@
 
-    
 const items = {
 	"1":"hat",
 	"2":"pants",
@@ -20,6 +19,11 @@ const dependencies = {
 
 const checkDependencies = (entry) => {
 	let deps = dependencies[entry];
+	if (wearing.indexOf(entry)>-1) {
+		wearing.push("fail");
+		console.log(wearing.join(" "));
+		throw new Error("fail");
+	}
 	deps.forEach(dep => {
 		if(wearing.indexOf(dep)<0) {
 			wearing.push("fail");
@@ -41,7 +45,9 @@ Outfit = {
     add : (entry) => {
        checkDependencies(entry);
        put_on(entry);
-       console.log(wearing.join(" "));
+       if(didLeave){
+           console.log(wearing.join(" "));
+       }
        return didLeave;
     }
 }
